@@ -1,13 +1,545 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Metiari Bottola Badminton Society (MBBS) - Premier badminton facility in West Bengal. Open daily from 7am to 11pm.">
+    <meta name="keywords" content="badminton, sports, Metiari, West Bengal, MBBS, badminton court, sports society">
+    <meta name="author" content="Metiari Bottola Badminton Society">
+    <meta property="og:title" content="Metiari Bottola Badminton Society (MBBS)">
+    <meta property="og:description" content="Premier badminton facility in West Bengal with professional courts and training.">
+    <meta property="og:type" content="website">
+    <title>Metiari Bottola Badminton Society (MBBS) | Premier Badminton Facility</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #e63946;
+            --secondary: #f1faee;
+            --accent1: #a8dadc;
+            --accent2: #457b9d;
+            --dark: #1d3557;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+        
+        .nav-link {
+            color: var(--dark);
+            font-weight: 600;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(29, 53, 87, 0.8), rgba(29, 53, 87, 0.8)), url('https://images.unsplash.com/photo-1554386696-5c039b0b5a67?ixlib=rb-4.0.3') center/cover no-repeat;
+            color: white;
+            padding: 150px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1.2s ease;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: #c1121f;
+            border-color: #c1121f;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .about {
+            padding: 100px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .founders {
+            padding: 100px 0;
+        }
+        
+        .founder-card {
+            text-align: center;
+            margin-bottom: 30px;
+            transition: all 0.3s;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .founder-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .founder-img {
+            height: 200px;
+            background-color: var(--accent1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .founder-img i {
+            font-size: 80px;
+            color: var(--dark);
+        }
+        
+        .hours {
+            padding: 100px 0;
+            background: linear-gradient(to right, var(--accent2), var(--dark));
+            color: white;
+        }
+        
+        .hours-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .hours-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .contact {
+            padding: 100px 0;
+        }
+        
+        .contact-info {
+            background-color: var(--secondary);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon i {
+            color: white;
+            font-size: 24px;
+        }
+        
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        .floating {
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        .shuttlecock {
+            position: absolute;
+            font-size: 30px;
+            color: white;
+            opacity: 0.7;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero {
+                padding: 120px 0 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-shuttlecock me-2"></i>MBBS
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#founders">Founders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#hours">Hours</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="shuttlecock" style="top: 20%; left: 10%;">🏸</div>
+        <div class="shuttlecock" style="top: 60%; left: 85%;">🏸</div>
+        <div class="shuttlecock" style="top: 30%; left: 75%;">🏸</div>
+        <div class="container text-center">
+            <h1>Metiari Bottola Badminton Society</h1>
+            <p>West Bengal's Premier Badminton Facility</p>
+            <a href="#contact" class="btn btn-primary btn-lg">Join Us Today</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h2 class="section-title">About MBBS</h2>
+                    <p>Metiari Bottola Badminton Society (MBBS) was established on November 2nd, 2025 with a vision to promote badminton as a sport and create a community of passionate players in West Bengal.</p>
+                    <p>Our state-of-the-art facility in Pratapnagar, Metiari is equipped with professional-grade courts and training equipment to help players of all levels improve their game.</p>
+                    <p>Whether you're a beginner looking to learn or an experienced player seeking competitive matches, MBBS provides the perfect environment for badminton enthusiasts.</p>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1590065480004-477ef6d4d8d4?ixlib=rb-4.0.3" alt="Badminton Court" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founders Section -->
+    <section id="founders" class="founders">
+        <div class="container">
+            <h2 class="section-title text-center">Our Founders</h2>
+            <p class="text-center mb-5">MBBS was established by six passionate badminton enthusiasts who envisioned creating a premier badminton facility.</p>
+            
+            <div class="row">
+                <div class="col-md-4 col-sm-6" data-aos="flip-left" data-aos-delay="100">
+                    <div class="founder-card">
+                        <div class="founder-img">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="p-4">
+                            <h5>Shib Shankar Paul</h5>
+                            <p>Co-Founder</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-sm-6" data-aos="flip-left" data-aos-delay="200">
+                    <div class="founder-card">
+                        <div class="founder-img">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="p-4">
+                            <h5>Ramprasad Karmakar</h5>
+                            <p>Co-Founder</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-sm-6" data-aos="flip-left" data-aos-delay="300">
+                    <div class="founder-card">
+                        <div class="founder-img">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="p-4">
+                            <h5>Milon Mukherjee</h5>
+                            <p>Co-Founder</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-sm-6" data-aos="flip-left" data-aos-delay="400">
+                    <div class="founder-card">
+                        <div class="founder-img">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="p-4">
+                            <h5>Diganta Ghosal</h5>
+                            <p>Co-Founder</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-sm-6" data-aos="flip-left" data-aos-delay="500">
+                    <div class="founder-card">
+                        <div class="founder-img">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="p-4">
+                            <h5>Hritick Baidya</h5>
+                            <p>Co-Founder</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-sm-6" data-aos="flip-left" data-aos-delay="600">
+                    <div class="founder-card">
+                        <div class="founder-img">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="p-4">
+                            <h5>Suman Sardar</h5>
+                            <p>Co-Founder</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hours Section -->
+    <section id="hours" class="hours">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h2 class="section-title text-white">Operating Hours</h2>
+                    <p>We're open every day of the week to accommodate your busy schedule. Come play and practice at your convenience!</p>
+                    <ul class="hours-list">
+                        <li><span>Sunday</span> <span>07 am – 11 pm</span></li>
+                        <li><span>Monday</span> <span>07 am – 11 pm</span></li>
+                        <li><span>Tuesday</span> <span>07 am – 11 pm</span></li>
+                        <li><span>Wednesday</span> <span>07 am – 11 pm</span></li>
+                        <li><span>Thursday</span> <span>07 am – 11 pm</span></li>
+                        <li><span>Friday</span> <span>07 am – 11 pm</span></li>
+                        <li><span>Saturday</span> <span>07 am – 11 pm</span></li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 text-center" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1590150365361-5a1ab5be5f2c?ixlib=rb-4.0.3" alt="Badminton Players" class="img-fluid rounded shadow floating">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title text-center">Contact Us</h2>
+            
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-info">
+                        <div class="row">
+                            <div class="col-md-4 text-center mb-4" data-aos="zoom-in">
+                                <div class="contact-icon mx-auto">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <h5>Address</h5>
+                                <p>Pratapnagar, Metiari, West Bengal 743330</p>
+                            </div>
+                            
+                            <div class="col-md-4 text-center mb-4" data-aos="zoom-in" data-aos-delay="100">
+                                <div class="contact-icon mx-auto">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <h5>Phone</h5>
+                                <p>094744 60058</p>
+                            </div>
+                            
+                            <div class="col-md-4 text-center mb-4" data-aos="zoom-in" data-aos-delay="200">
+                                <div class="contact-icon mx-auto">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                </div>
+                                <h5>Google Map</h5>
+                                <p><a href="https://share.google/7QEYkQ0gXYH8eEYoY" class="text-decoration-none">View on Google Maps</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h4>MBBS</h4>
+                    <p>Metiari Bottola Badminton Society - Promoting badminton excellence since 2025.</p>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="#about" class="text-white text-decoration-none">About</a></li>
+                        <li><a href="#founders" class="text-white text-decoration-none">Founders</a></li>
+                        <li><a href="#hours" class="text-white text-decoration-none">Hours</a></li>
+                        <li><a href="#contact" class="text-white text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Connect With Us</h5>
+                    <div class="social-icons">
+                        <a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 Metiari Bottola Badminton Society. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>Designed with <i class="fas fa-heart text-danger"></i> for badminton lovers</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-in-out'
+        });
+        
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').style.padding = '10px 0';
+                document.querySelector('.navbar').style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                document.querySelector('.navbar').style.padding = '15px 0';
+                document.querySelector('.navbar').style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
+</body>
 </html>
